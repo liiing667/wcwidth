@@ -6,6 +6,7 @@ https://github.com/jquast/wcwidth
 
 __lazy_modules__ = [
     "wcwidth._clip",
+    "wcwidth._truncate",
     "wcwidth._wcswidth",
     "wcwidth._wcwidth",
     "wcwidth._width",
@@ -30,6 +31,7 @@ from functools import lru_cache
 
 # local
 from ._clip import clip
+from ._truncate import truncate
 # re-export common and outermost functions & definitions, even a few private ones. Some are for
 # convenience and others for legacy, only the items in '__all__' are documented as public API
 from .bisearch import bisearch as _bisearch
@@ -93,7 +95,7 @@ from ._wcwidth import _wcmatch_version, _wcversion_value  # isort:skip  # pylint
 # 'from wcwidth import *', but also to say, "This is the public API".
 __all__ = ('wcwidth', 'wcswidth', 'wcstwidth', 'width', 'iter_sequences', 'iter_graphemes',
            'iter_graphemes_reverse', 'grapheme_boundary_before',
-           'ljust', 'rjust', 'center', 'wrap', 'clip', 'strip_sequences',
+           'ljust', 'rjust', 'center', 'wrap', 'clip', 'truncate', 'strip_sequences',
            'list_versions', 'list_term_programs', 'propagate_sgr',
            'Hyperlink', 'HyperlinkParams', 'TextSizing', 'TextSizingParams')
 

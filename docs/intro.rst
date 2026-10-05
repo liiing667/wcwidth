@@ -358,6 +358,28 @@ Use ``overtyping=False`` when the input is known not to contain any cursor movem
 ``overtyping=None`` (default), a slower "Painter's algorithm" may be used after testing for the
 presence of these characters. ``overtyping`` has no effect when ``control_codes='ignore'``.
 
+truncate()
+----------
+
+Use `truncate()`_ to shorten text to a maximum display width, appending an ellipsis whose width
+counts against the limit.
+
+.. code-block:: python
+
+    >>> from wcwidth import truncate
+    >>> truncate('hello world', 8)
+    'hello w…'
+    >>> truncate('中文字', 5)
+    '中文…'
+
+    >>> # grapheme clusters, such as ZWJ emoji, are never split
+    >>> truncate('\U0001F468\u200D\U0001F469\u200D\U0001F467 world', 4)
+    '👨\u200d👩\u200d👧 …'
+
+    >>> # SGR styles and OSC 8 hyperlinks left open are closed at the end
+    >>> truncate('\x1b[1;31mhello world', 8)
+    '\x1b[1;31mhello w…\x1b[0m'
+
 strip_sequences()
 -----------------
 
@@ -533,6 +555,7 @@ https://wcwidth.readthedocs.io/en/latest/related.html
 .. _`center()`: https://wcwidth.readthedocs.io/en/latest/api.html#wcwidth.center
 .. _`wrap()`: https://wcwidth.readthedocs.io/en/latest/api.html#wcwidth.wrap
 .. _`clip()`: https://wcwidth.readthedocs.io/en/latest/api.html#wcwidth.clip
+.. _`truncate()`: https://wcwidth.readthedocs.io/en/latest/api.html#wcwidth.truncate
 .. _`strip_sequences()`: https://wcwidth.readthedocs.io/en/latest/api.html#wcwidth.strip_sequences
 .. _`iter_sequences()`: https://wcwidth.readthedocs.io/en/latest/api.html#wcwidth.iter_sequences
 .. _`list_term_programs()`: https://wcwidth.readthedocs.io/en/latest/api.html#wcwidth.list_term_programs

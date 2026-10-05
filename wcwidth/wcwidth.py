@@ -12,6 +12,7 @@ this single file, 'wcwidth'::
 
 __lazy_modules__ = [
     "wcwidth._clip",
+    "wcwidth._truncate",
     "wcwidth._constants",
     "wcwidth._wcswidth",
     "wcwidth._wcwidth",
@@ -33,6 +34,7 @@ __lazy_modules__ = [
 
 # local
 from ._clip import clip
+from ._truncate import truncate
 from .align import ljust, rjust, center
 from ._width import _CONTROL_CHAR_TABLE, _WIDTH_FAST_PATH_MIN_LEN, width, _width_ignored_codes
 from ._wcwidth import wcwidth, _wcmatch_version, _wcversion_value
@@ -82,6 +84,7 @@ __all__ = (
     'rjust',
     'center',
     'clip',
+    'truncate',
     'strip_sequences',
     '_wcmatch_version',
     '_wcversion_value',
